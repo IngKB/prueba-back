@@ -28,7 +28,6 @@ export class SlideshowEmailSender implements EmailSenderStrategy{
                 this.post.images.forEach(imag=>{
                     images += `<img src="${imag.image}" alt=${imag.title} style="width:200px">`
                 });
-                console.log(images);
                 const mail = {
                     to: `${user.email}`,
                     subject: 'Se ha creado un nuevo post',

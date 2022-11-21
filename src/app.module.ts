@@ -9,7 +9,7 @@ import { UserModule } from './user/user.module';
   imports: [
     UtilsModule,
     PostModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/pruebanest'),
+    MongooseModule.forRoot('mongodb+srv://karlosadmin:karlospsw@cluster0.bsyo01q.mongodb.net/?retryWrites=true&w=majority'),
     UserModule],
   controllers: [AppController],
   providers: [],

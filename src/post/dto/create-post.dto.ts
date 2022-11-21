@@ -8,7 +8,9 @@ export class CreatePostDto {
     @IsNotEmpty()
     text: string;
 
+    @IsNotEmpty()
     tags?: string[];
 
+    @IsNotEmpty()
     images?: string[];
 }

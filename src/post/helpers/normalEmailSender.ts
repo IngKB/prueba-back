@@ -23,7 +23,7 @@ export class NormalEmailSender implements EmailSenderStrategy {
                 this.post.tags.forEach(tag => {
                     tags += `<li style="padding:4px;background-color:#E3FDEE;border-radius:2px;display:inline-block;">${tag}</li>`;
                 });
-
+                
                 const mail = {
                     to: `${user.email}`,
                     subject: 'Se ha creado un nuevo post',

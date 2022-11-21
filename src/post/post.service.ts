@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreatePostDto } from './dto/create-post.dto';
-import { UpdatePostDto } from './dto/update-post.dto';
 import { EmailSenderStrategy } from './helpers/emailSenderStrategy';
 import { NormalEmailSender } from './helpers/normalEmailSender';
 import { SlideshowEmailSender } from './helpers/slideshowEmailSender';
 import { Post, PostDocument } from './models/post.schema';
 import { SendgridService } from '../utils/sendgrid.service';
 import { UserService } from '../user/user.service';
+import { CreatePostResponseDto } from './dto/create-post-response.dto';
 
 @Injectable()
 export class PostService {
@@ -32,17 +32,17 @@ export class PostService {
 
       let emailSender: EmailSenderStrategy;
 
-      if (!createPostDto.images || createPostDto.images!.length == 0) {
+      if (createPostDto.images!.length == 1) {
         emailSender = new NormalEmailSender(res, this.emailService, this.userService);
       } else {
         emailSender = new SlideshowEmailSender(res, this.emailService, this.userService);
       }
 
       emailSender.execute();
-      return "Publicación creada exitosamente!";
+      return new CreatePostResponseDto("Publicación creada exitosamente",0);
     } catch (error) {
       console.log(error);
-      return "Error al publicar";
+      return new CreatePostResponseDto("Error al publicar",1);
     }
 
   }
@@ -51,15 +51,4 @@ export class PostService {
     return this.postModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} post`;
-  }
-
-  /*  update(id: number, updatePostDto: UpdatePostDto) {
-     return `This action updates a #${id} post`;
-   }
- 
-   remove(id: number) {
-     return `This action removes a #${id} post`;
-   } */
 }
