@@ -42,7 +42,7 @@ export class SlideshowEmailSender implements EmailSenderStrategy{
                 };
                 await this.sendgridService.send(mail)
             } catch (error) {
-                console.log(error);
+                console.log("Error al enviar correo");
             }
 
         });
@@ -64,7 +64,7 @@ export class SlideshowEmailSender implements EmailSenderStrategy{
                 await this.sendgridService.send(mail)
             }
             catch (error) {
-                console.log(error);
+                console.log("Error al enviar correo");
             }
         });
     }

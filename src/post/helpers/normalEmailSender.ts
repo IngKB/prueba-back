@@ -36,7 +36,7 @@ export class NormalEmailSender implements EmailSenderStrategy {
                 };
                 await this.sendgridService.send(mail)
             } catch (error) {
-                console.log(error);
+                console.log("Error al enviar correo");
             }
 
         });
@@ -58,7 +58,7 @@ export class NormalEmailSender implements EmailSenderStrategy {
                 await this.sendgridService.send(mail)
             }
             catch (error) {
-                console.log(error);
+                console.log("Error al enviar correo");
             }
         });
 
